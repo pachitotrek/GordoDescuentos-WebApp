@@ -1,0 +1,33 @@
+.logo{
+    height: 80px;
+    width: 80px;
+}
+
+.box{
+    padding: 5px;
+}
+
+.menu{
+    display: flex;
+}
+.toogle{
+    display: none;
+}
+.pr-2{
+padding-right: 10px;
+}
+
+ion-item{
+    --background:transparent;
+}
+
+
+@media (min-width: 0px) and (max-width: 720px) {
+    .menu{
+        display: none;
+    }
+    .toogle{
+        display: flex;
+    }
+
+  }

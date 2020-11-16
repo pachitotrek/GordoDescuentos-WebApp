@@ -1,0 +1,24 @@
+<ion-header>
+<app-menu></app-menu>
+</ion-header>
+
+<ion-content>
+    <ion-grid no-padding>
+        <ion-row text-center>
+          <ion-col size-sm="3" *ngFor="let c of locations" text-center>
+            <ion-card class="m-2">
+              <ion-card-header>
+                <ion-card-subtitle>{{c.descripcion}}</ion-card-subtitle>
+                <ion-card-title>{{c.titulo}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <img [src]="c.imagen | imagen:'lugar'" alt="">
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <app-footer></app-footer>
+
+</ion-content>

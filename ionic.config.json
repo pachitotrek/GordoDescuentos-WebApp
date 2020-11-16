@@ -1,0 +1,7 @@
+{
+  "name": "gordodescuentos",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

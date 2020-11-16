@@ -1,0 +1,96 @@
+<ion-header>
+    <app-menu></app-menu>
+</ion-header>
+<ion-content>
+    <ion-grid no-padding>
+        <ion-row>
+            <ion-col size="12" text-center>
+                <ion-text color="primary">
+                    <h4>PUBLIQUE UNA NUEVA OFERTA</h4>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-padding" text-center>
+            <ion-col size-sm="6" text-center>
+                <form [formGroup]="cupon" (ngSubmit)="crear()">
+                    <ion-text color="primary">
+                        <h5>DETALLES DE LA OFERTA</h5>
+                    </ion-text>
+                    <ion-item>
+                        <ion-label position="floating">Titulo de la oferta </ion-label>
+                        <ion-input type="text" placeholder="" formControlName="titulo"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Cual es la oferta </ion-label>
+                        <ion-input type="text" placeholder="ejemplo: 20% de descuento - 2x1 " formControlName="oferta">
+                        </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Como se llama el restaurante que ofrece la Oferta </ion-label>
+                        <ion-input type="text" placeholder="ejemplo: el fogon  " formControlName="restaurante">
+                        </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Direccion del restaurante</ion-label>
+                        <ion-input type="text" placeholder="  " formControlName="direccion">
+                        </ion-input>
+                    </ion-item>
+                    <hr>
+                    <ion-item>
+                        <ion-label position="stacked">Fecha de fin de la oferta</ion-label>
+                        <ion-input type="date" placeholder="  " formControlName="fin">
+                        </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Region donde se encuentra la oferta</ion-label>
+                        <ion-select placeholder="Seleccione Una" formControlName="location">
+                            <ion-select-option *ngFor="let x of locations" [value]="x._id">{{x.titulo}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Que Clase de Comida es ?</ion-label>
+                        <ion-select placeholder="Seleccione Una" formControlName="categoria">
+                            <ion-select-option *ngFor="let y of categorias" [value]="y._id">{{y.titulo}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Descripcion de la oferta</ion-label>
+                        <ion-textarea placeholder="Enter more information here..." formControlName="descripcion">
+                        </ion-textarea>
+                    </ion-item>
+                </form>
+            </ion-col>
+            <ion-col size-sm="6">
+                <ion-text color="primary">
+                    <h5>IMAGEN DE LA OFERTA</h5>
+                </ion-text>
+                <div text-center>
+                    <img [src]="Imagendata | imagen:'cupon'" alt="" class="img" *ngIf="!ImagenTemp">
+                    <img [src]="ImagenTemp" alt="" class="img" *ngIf="!Imagendata">
+                </div>
+                <ion-item>
+                    <ion-label>Agregue una imagen</ion-label>
+                    <input type="file" #fileinput class="form-control-file"
+                        (change)="seleccionImagen($event.target.files[0])">
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row text-center class="ion-margin-bottom">
+            <ion-col size-sm="12">
+                <ion-button (click)="crear()" [disabled]="!cupon.valid && !archivo" *ngIf="logged" >
+                    Agregar nueva oferta
+                </ion-button>
+                <ion-button (click)="nav()" *ngIf="!logged">
+                   Iniciar Sesion
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+
+
+
+
+    <app-footer></app-footer>
+</ion-content>

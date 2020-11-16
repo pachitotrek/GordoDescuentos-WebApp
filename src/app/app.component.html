@@ -1,0 +1,30 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu type="overlay" *ngIf="active">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title *ngIf="!login" >Menu</ion-title>
+          <ion-item slot="start" class="pr-2 menu" *ngIf="login">
+            <ion-avatar slot="start">
+              <img [src]="usuario.imagen" />
+            </ion-avatar>
+            <ion-label color="light">{{usuario.username}}</ion-label>
+          </ion-item>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content color="primary">
+        <ion-list color="primary">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages" color="primary">
+            <ion-item (click)="make(p)" color="primary">
+              <!-- <ion-icon slot="start" [name]="p.icon"></ion-icon> -->
+              <ion-label>
+                {{p.pagina}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

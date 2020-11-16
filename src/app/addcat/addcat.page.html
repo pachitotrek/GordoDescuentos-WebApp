@@ -1,0 +1,82 @@
+<ion-header>
+  <app-menu></app-menu>
+</ion-header>
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row class="ion-justify-content-center margin">
+      <ion-col size-sm="6" text-center>
+        <div class="box">
+          <ion-item lines="none" text-center>
+            <ion-label color="primary" class="h5">Añadir Categoria</ion-label>
+          </ion-item>
+
+          <form [formGroup]="form" (ngSubmit)="crear()">
+            <ion-item class="p-2">
+              <ion-label position="floating">Titulo</ion-label>
+              <ion-input type="text" formControlName="titulo"></ion-input>
+            </ion-item>
+            <ion-item class="p-2">
+              <ion-label position="floating" >Agregue una Descripción</ion-label>
+              <ion-textarea rows="6" formControlName="descripcion"></ion-textarea>
+            </ion-item>
+            <ion-item class="p-2" *ngIf="Imagendata"> 
+              <img [src]="Imagendata | imagen:'categoria'" alt="" class="img" >
+            </ion-item>
+            <ion-item class="p-2" *ngIf="ImagenTemp"> 
+              <img [src]="ImagenTemp" alt="" class="img" >
+            </ion-item>
+            <ion-item class="p-2">
+              <ion-label>Agregue Imagen</ion-label>
+              <input type="file" #fileinput class="form-control-file"
+                (change)="seleccionImagen($event.target.files[0])">
+            </ion-item>
+
+            <ion-button expand="full" color="success" [disabled]="!form.valid" *ngIf="!update" type="submit">CREAR
+            </ion-button>
+            <ion-button expand="full" color="primary" [disabled]="!form.valid" *ngIf="update" type="button"
+              (click)="updateCat()">ACTUALIZAR</ion-button>
+          </form>
+        </div>
+      </ion-col>
+      <ion-col size-sm="6">
+        <div class="text-center mt-3">
+          <h4>Categorias Actuales</h4>
+        </div>
+        <div class="table">
+          <div class="table-header">
+            <div class="header__item"><a id="name" class="text">Imagen</a></div>
+            <div class="header__item"><a id="name" class="text">Titulo</a></div>
+            <div class="header__item"><a id="name" class="text">Descripcion</a></div>
+            <div class="header__item"><a id="wins" class="text">Editar</a></div>
+            <div class="header__item"><a id="draws" class="text">Eliminar</a></div>
+          </div>
+          <div class="table-content" *ngFor="let x of categorias">
+            <div class="table-row">
+                <div class="table-data">
+                    <img [src]="x.imagen | imagen:'categoria'" height="80" alt="">
+                  </div>
+              <div class="table-data">{{x.titulo}}</div>
+              <div class="table-data">{{x.descripcion}}</div>
+            
+              <div class="table-data">
+                <ion-button (click)="setMenu(x)" color="secondary">
+                  Editar
+                </ion-button>
+              </div>
+              <div class="table-data">
+                <ion-button (click)="eliminar(x)" color="danger">
+                  Eliminar
+                </ion-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
+
+  <app-footer></app-footer>
+</ion-content>

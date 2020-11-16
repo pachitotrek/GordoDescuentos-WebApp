@@ -1,0 +1,39 @@
+<ion-header>
+  <app-menu></app-menu>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-justify-content-center">
+      <div class="box">
+        <ion-item lines="none" text-center>
+          <ion-label color="primary" class="h5">INICIAR SESION</ion-label>
+        </ion-item>
+
+        <form [formGroup]="form" (ngSubmit)="login()">
+          <ion-item>
+            <ion-label position="floating">Correo Electronico</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" formControlName="pass"></ion-input>
+          </ion-item>      
+          <ion-button expand="full" color="primary" [disabled]="!form.valid" type="submit">INGRESAR</ion-button>
+        </form>
+        <div class="login-or">
+          <hr class="hr-or">
+          <span class="span-or">ó usa</span>
+        </div>
+        <ion-button expand="full" color="blue" id="btnGoogle">
+            <ion-icon name="logo-google"></ion-icon> Google
+        </ion-button>       
+        <ion-button expand="full" color="medium" class="ion-margin-top" (click)="redirect()">REGISTRARSE</ion-button>      
+      </div>
+    </ion-row>
+  </ion-grid>
+
+  <app-footer></app-footer>
+
+
+</ion-content>

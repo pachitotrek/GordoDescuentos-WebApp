@@ -1,0 +1,13 @@
+.fondo{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 35vh;
+    width: 100vw; 
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

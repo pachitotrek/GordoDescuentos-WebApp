@@ -1,0 +1,51 @@
+<ion-header>
+  <app-menu></app-menu>
+</ion-header>
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row class="ion-no-margin ion-no-padding">
+      <ion-col size-sm="12" class="ion-no-margin ion-no-padding">
+        <ion-slides>
+          <ion-slide class="slide" *ngFor="let item of publicidad">
+            <app-publicidad [data]="item"></app-publicidad>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="12">
+        <ion-text color="primary" class="ion-text-center">
+          <h3>Busca Tu Cupon</h3>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="marco">
+      <ion-col size-sm="6" class="ion-no-padding">
+        <ion-item color="tertiary" class="buscador-left">
+          <ion-label>Selecciona Categoria</ion-label>
+          <ion-select value="" okText="Ok" cancelText="Cancelar" (ionChange)="setcat($event);">
+              <ion-select-option value="">Todas</ion-select-option>
+            <ion-select-option *ngFor="let c of categorias" [value]="c._id"  >{{c.titulo}}</ion-select-option>           
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size-sm="6" class="ion-no-padding">
+        <ion-item color="tertiary" class="buscador-right">
+          <ion-label>Ciudad</ion-label>
+          <ion-select value="" okText="Ok" cancelText="Cancelar" (ionChange)="setloca($event);">
+            	<ion-select-option value="">Todas</ion-select-option>
+            <ion-select-option *ngFor="let a of locations" [value]="a._id">{{a.titulo}}</ion-select-option>      
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-margin">
+      <ion-col size-md="3" *ngFor="let item of cupones" >
+        <app-cupon [cupon]="item"></app-cupon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-footer></app-footer>
+
+</ion-content>

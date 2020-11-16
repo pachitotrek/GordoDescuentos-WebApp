@@ -1,0 +1,23 @@
+<ion-toolbar color="primary">
+  <ion-buttons slot="start" class="box menu">
+    <ion-img src="/assets/img/logo.png" class="logo"></ion-img>
+    <ion-button *ngFor="let item of menu" (click)="nav(item.link)" >
+      {{item.pagina}}
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons slot="start" class="box toogle">
+    <ion-img src="/assets/img/logo.png" class="logo"></ion-img>
+  </ion-buttons>
+  <ion-buttons slot="end" class="box toogle">
+    <ion-button (click)="menutoogle()">
+      <ion-icon slot="start" name="menu" size="large"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <ion-item slot="end" class="pr-2 menu" (click)="popmenu( $event )" *ngIf="login" >
+    <ion-avatar slot="start">
+      <img [src]="usuario.imagen" />
+    </ion-avatar>
+    <ion-label color="light">{{usuario.username}}</ion-label>
+  </ion-item>
+</ion-toolbar>

@@ -1,0 +1,12 @@
+ion-menu {
+    
+    ion-list {/* optional, but it needs when you use gradient as a background color.*/
+      background: transparent;
+    }
+  }
+
+
+
+  ion-item{
+    --background:transparent;
+}  

@@ -1,0 +1,43 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Comentarios Recientes</ion-card-title>
+    <ion-card-subtitle>Debes estar Registrado para comentar</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img [src]="imguser | imagen:'usuario'">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{usuario.nombre}} {{usuario.apellido}}</h2>
+          <div class="chat-message clearfix">
+            <form [formGroup]="form">
+              <textarea name="message-to-send" formControlName="mensaje" placeholder="Type your message"
+                rows="3"></textarea>
+            </form>
+          </div>
+        </ion-label>
+        <div>
+          <ion-button (click)="send()" [disabled]="!form.valid" *ngIf="logged">
+            Enviar
+          </ion-button>
+          <ion-button (click)="nav()" *ngIf="!logged">
+            Iniciar Sesion
+         </ion-button>
+        </div>
+      </ion-item>
+      <ion-item *ngFor="let x of comentarios">
+        <ion-avatar slot="start">
+          <img [src]="x.from?.imagen">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{x.from?.username}}</h2>
+          <p>{{x.body}}</p>
+          <span class="advice">{{x.fecha | date}}</span>
+        </ion-label>
+        <ion-icon slot="end" name="close" color="danger" *ngIf="x.from?._id==usuario._id" (click)="delete(x._id)"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
